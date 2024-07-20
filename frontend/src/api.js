@@ -1,8 +1,12 @@
 // frontend/src/api.js
-const API_URL = "http://localhost:8000";
+const API_URL = "https://fuzzy-acorn-xjpjpxr5v42qwg-8000.app.github.dev";
+//  const API_URL = "http://localhost:8000";
 
 export const getCandies = async (candySetId) => {
-  const response = await fetch(`${API_URL}/candies/${candySetId}`).catch(
+  const response = await fetch(`${API_URL}/candies/${candySetId}`, {
+    method: "GET",
+    mode: "cors",
+  }).catch(
     (error) => {
       return { error: "Candy set not found! is your backend running" };
     }
@@ -16,6 +20,7 @@ export const getCandies = async (candySetId) => {
 export const lickCandies = async (candySetId) => {
   const response = await fetch(`${API_URL}/lick/${candySetId}`, {
     method: "POST",
+    mode: "cors",
   });
   return response.json();
 };
